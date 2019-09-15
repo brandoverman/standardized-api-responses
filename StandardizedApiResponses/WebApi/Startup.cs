@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Brandoverman.Common.Filters;
 
 namespace Brandoverman.WebApi
 {
@@ -26,6 +27,13 @@ namespace Brandoverman.WebApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            services.AddMvc(options =>
+            {
+                options.Filters.Add(new ApiResultFilterAttribute());
+                //options.Filters.Add(new ApiExceptionFilterAttribute());
+            })
+            .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
