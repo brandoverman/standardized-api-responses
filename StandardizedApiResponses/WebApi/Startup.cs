@@ -31,7 +31,7 @@ namespace Brandoverman.WebApi
             services.AddMvc(options =>
             {
                 options.Filters.Add(new ApiResultFilterAttribute());
-                //options.Filters.Add(new ApiExceptionFilterAttribute());
+                options.Filters.Add(new ApiExceptionFilterAttribute());
             })
             .SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
